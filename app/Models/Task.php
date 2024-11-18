@@ -10,4 +10,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Task extends Authenticatable
 {
     use HasFactory, Notifiable;
+    protected $fillable = ['title', 'description', 'long_description'];
+    public function taskcomplete()
+    {
+        $this->completed = !$this->completed;
+        $this->save();
+    }
+    //can use guarded specifying what not to use
 }

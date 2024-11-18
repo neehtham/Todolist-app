@@ -1,14 +1,42 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        @yield('styles')
-        <title>Todo list</title>
-    </head>
-    @if(session()->has('success'))
-        <div> {{session('success')}} </div>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.tailwindcss.com"></script>
+    @yield('styles')
+    {{-- blade-formatter-disable --}}
+    <style type="text/tailwindcss">
+        .btn {
+            @apply rounded-md px-2 py-1 text-center font-medium text-slate-700 shadow-sm ring-1 ring-slate-700/10 hover:bg-slate-50
+        }
+
+        .link {
+            @apply text-lg text-gray-500 font-semibold hover:text-gray-700
+        }
+        label {
+            @apply block uppercase text-slate-700 mb-2
+        }
+        input, 
+        textarea {
+          @apply shadow-sm appearance-none border w-full py-2 px-3 text-slate-700 leading-tight focus:outline-none
+        }
+        .error {
+          @apply text-red-500 text-sm
+        }
+
+        </style>
+        {{-- blade-formatter-enable --}}
+    <title>Todo list</title>
+</head>
+
+<body class="container mx-auto mt-10 mb-10 max-w-lg">
+    @if (session()->has('success'))
+        <div> {{ session('success') }} </div>
     @endif
-    <h1>@yield('title')</h1>
+    <h1 class="text-3xl font-bold mb-4">@yield('title')</h1>
     <div>@yield('content')</div>
+</body>
+
 </html>
